@@ -20,7 +20,6 @@ def open_user_file():
     return user_data
 
 def open_task_file():
-    #I cerate both a list and a dictionary here for ease of use later on in the code
     file_data = []
     file_dict = {}
     with open(r'tasks.txt' , 'r') as f:
@@ -34,7 +33,6 @@ def open_task_file():
             return file_data
                 
 def reg_user():
-    #these lines of code are unchanged from the prior submission of the project.
     user_data = []
     with open(r'user.txt', 'r') as f:
         user_file = f.readlines()
@@ -68,7 +66,6 @@ def reg_user():
         f.write('\n' + registered_user)
 
 def add_task():
-    #these lines of code are unchanged from the prior project submitted
     task_username = input('Who is this taks allocated to: ').lower()
     task_title = input('What is the title of the task: ').lower()
     task_description = input('Description of the task: ').lower()
@@ -81,7 +78,6 @@ def add_task():
         f.write(new_task)
 
 def view_all():
-    #this code has also not been changed from the prior submission of the project
      with open(r'tasks.txt' , 'r') as f:
             task_file = f.readlines()
             for line in task_file:
@@ -97,7 +93,6 @@ def view_all():
                 print('_____________________________________________________')
 
 def view_mine():
-    #this is the same code as for the task function. It was here first and I later decided to move it to its own function.
     file_data = []
     file_dict = {}
     with open(r'tasks.txt' , 'r') as f:
@@ -142,7 +137,6 @@ def user_choice(choice, file_data, file_dict):
     #here I give the user options on what they would like to do.
     #if the user chooses yes it will change the completed to yes and overwrite it into the text file
     #if the user chooses to edit then it will allow them too edit the date
-    #one problem I am experiancing is that the -1 does not take them back to the main menu and I am uncertain why
     task_editor = input('''Would you like to mark this task as complete or edit the task?
 Enter Yes to mark the task as complete.
 Enter edit if you would like to edit the task. 
@@ -157,7 +151,6 @@ Please enter your choice: ''').lower()
         new_due_date = input('What is the new due date: ').lower()
         task[3] = ' ' + new_due_date
     
-    #here is the write function where I open the file in write mode and and overwrite the data
     with open(r'tasks.txt', 'w') as f:
         f.write('')
     #I use a for loop to itterate through the list to convert it into a string to write back into the text file.    
@@ -209,7 +202,6 @@ def generate_reports():
         
 #percentage of tasks that are overdue
     percentage_overdue = str(round((over_due_tasks/total_number_of_tasks)*100)) + '%'
-    #here I write all of the above information into a new text file to later be opened and used  
     with open('task_overview.txt', 'w') as f:
         l1 = 'The total number of tasks generated are: ' + str(total_number_of_tasks) + '\n'
         l2 = 'The total number of completed tasks are: ' + str(completed_count) + '\n'
@@ -227,7 +219,6 @@ def generate_reports():
             user_count += 1
     total_number_of_users = user_count
     
-#for loop for every user in the task file
 #here I set the new text file as write+ so that I can write information into it
 #I have kept this seperate from the loop so that it does not duplicate into the text file and only write once 
     f = open('user_overview.txt', 'w+')
@@ -352,7 +343,6 @@ while True:
 #====Login Section====
 
 #====Menu Section====
-#no change to the code below, small changed requested on the menu as per the assignment
 registered_user = 0
 while True:
     if username == 'admin':
